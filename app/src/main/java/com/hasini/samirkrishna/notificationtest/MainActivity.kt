@@ -28,10 +28,14 @@ class MainActivity : AppCompatActivity() {
         nBuilder.setContentText("Emergency Meeting")
         nBuilder.setAutoCancel(true)
 
+
         var i =Intent(this,MainActivity::class.java)
         var pIntent=PendingIntent.getActivity(this,0,i,0)
         nBuilder.setContentIntent(pIntent)
 
-        nManager.notify(123,nBuilder.build())//to set notification to status bar
+        nBuilder.addAction(R.drawable.notification_icon_background,"cancel",pIntent)
+
+        nManager.notify(System.currentTimeMillis().toInt(),nBuilder.build())//to set notification to status bar
     }
+    
 }
